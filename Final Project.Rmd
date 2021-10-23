@@ -29,12 +29,30 @@ histogram(~Lot_Area, data = Ames, type="count", breaks=seq(1200, 222000, 2500))
 ```
 
 ```{r}
+xyplot(SalePrice~Lot_Area, data = Ames, pch=19)
+```
+
+```{r}
+cor(SalePrice~Lot_Area, data = Ames)
+```
+
+
+```{r}
 favstats(~Bedroom_AbvGr, data = Ames, na.rm = TRUE)
 ```
 
 ```{r}
 histogram(~Bedroom_AbvGr, data = Ames, type="count", breaks=seq(0, 9, 1))
 ```
+
+```{r}
+xyplot(SalePrice~Bedroom_AbvGr, data = Ames, pch=19)
+```
+
+```{r}
+cor(SalePrice~Bedroom_AbvGr, data = Ames, use="complete.obs")
+```
+
 
 ```{r}
 Ames <- Ames %>% mutate(TotalBath = Full_Bath + Half_Bath + Bsmt_Full_Bath + Bsmt_Half_Bath)
@@ -49,12 +67,30 @@ histogram(~TotalBath, data = Ames, type = "count", breaks = seq(0, 9, 1))
 ```
 
 ```{r}
+xyplot(SalePrice~TotalBath, data = Ames, pch=19)
+```
+
+```{r}
+cor(SalePrice~TotalBath, data = Ames, use="complete.obs")
+```
+
+
+```{r}
 favstats(~Total_Bsmt_SF, data = Ames, na.rm = TRUE)
 ```
 
 ```{r}
 histogram(~Total_Bsmt_SF, data = Ames, type="count", breaks = seq(0, 6500, 500))
 ```
+
+```{r}
+xyplot(SalePrice~Total_Bsmt_SF, data = Ames, pch=19)
+```
+
+```{r}
+cor(SalePrice~Total_Bsmt_SF, data = Ames, use="complete.obs")
+```
+
 
 ```{r}
 favstats(~Garage_Area, data = Ames, na.rm = TRUE)
@@ -64,6 +100,13 @@ favstats(~Garage_Area, data = Ames, na.rm = TRUE)
 histogram(~Garage_Area, data = Ames, type = "count", breaks = seq(0, 1500, 100))
 ```
 
+```{r}
+xyplot(SalePrice~Garage_Area, data = Ames, pch=19)
+```
+
+```{r}
+cor(SalePrice~Garage_Area, data = Ames, use="complete.obs")
+```
 
 
 ```{r}
@@ -73,6 +116,15 @@ favstats(~Year_Built, data = Ames, na.rm = TRUE)
 ```{r}
 histogram(~Year_Built, data = Ames, type = "count", breaks = seq(1870, 2012, 10))
 ```
+
+```{r}
+xyplot(SalePrice~Year_Built, data = Ames, pch=19)
+```
+
+```{r}
+cor(SalePrice~Year_Built, data = Ames, use = "complete.obs")
+```
+
 
 ```{r}
 Ames <- Ames %>% 
@@ -88,6 +140,15 @@ histogram(~TotalSqFt, data = Ames, type = "count", breaks = seq(200, 5750, 250))
 ```
 
 ```{r}
+xyplot(SalePrice~TotalSqFt, data = Ames, pch=19)
+```
+
+```{r}
+cor(SalePrice~TotalSqFt, data = Ames)
+```
+
+
+```{r}
 Ames <- Ames %>% 
   mutate(OvrCondQual = Overall_Cond + Overall_Qual)
 ```
@@ -99,4 +160,13 @@ favstats(~OvrCondQual, data = Ames, na.rm = TRUE)
 ```{r}
 histogram(~OvrCondQual, data = Ames, type = "count", breaks = seq(0, 20, 1))
 ```
+
+```{r}
+xyplot(SalePrice~OvrCondQual, data = Ames, pch=19)
+```
+
+```{r}
+cor(SalePrice~OvrCondQual, data = Ames)
+```
+
 
