@@ -1,0 +1,102 @@
+---
+title: "EDA"
+author: "Lewis Luttrell"
+date: "10/22/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(tidyverse)
+library(dplyr)
+library(mosaic)
+```
+
+```{r}
+Ames <- read_csv("Ames.csv")
+```
+
+```{r}
+favstats(~Lot_Area, data = Ames, na.rm=TRUE)
+```
+
+
+```{r}
+histogram(~Lot_Area, data = Ames, type="count", breaks=seq(1200, 222000, 2500))
+```
+
+```{r}
+favstats(~Bedroom_AbvGr, data = Ames, na.rm = TRUE)
+```
+
+```{r}
+histogram(~Bedroom_AbvGr, data = Ames, type="count", breaks=seq(0, 9, 1))
+```
+
+```{r}
+Ames <- Ames %>% mutate(TotalBath = Full_Bath + Half_Bath + Bsmt_Full_Bath + Bsmt_Half_Bath)
+```
+
+```{r}
+favstats(~TotalBath, data = Ames, na.rm = TRUE)
+```
+
+```{r}
+histogram(~TotalBath, data = Ames, type = "count", breaks = seq(0, 9, 1))
+```
+
+```{r}
+favstats(~Total_Bsmt_SF, data = Ames, na.rm = TRUE)
+```
+
+```{r}
+histogram(~Total_Bsmt_SF, data = Ames, type="count", breaks = seq(0, 6500, 500))
+```
+
+```{r}
+favstats(~Garage_Area, data = Ames, na.rm = TRUE)
+```
+
+```{r}
+histogram(~Garage_Area, data = Ames, type = "count", breaks = seq(0, 1500, 100))
+```
+
+
+
+```{r}
+favstats(~Year_Built, data = Ames, na.rm = TRUE)
+```
+
+```{r}
+histogram(~Year_Built, data = Ames, type = "count", breaks = seq(1870, 2012, 10))
+```
+
+```{r}
+Ames <- Ames %>% 
+  mutate(TotalSqFt = SF_1st_Flr + SF_2nd_Flr)
+```
+
+```{r}
+favstats(~TotalSqFt, data = Ames, na.rm = TRUE)
+```
+
+```{r}
+histogram(~TotalSqFt, data = Ames, type = "count", breaks = seq(200, 5750, 250))
+```
+
+```{r}
+Ames <- Ames %>% 
+  mutate(OvrCondQual = Overall_Cond + Overall_Qual)
+```
+
+```{r}
+favstats(~OvrCondQual, data = Ames, na.rm = TRUE)
+```
+
+```{r}
+histogram(~OvrCondQual, data = Ames, type = "count", breaks = seq(0, 20, 1))
+```
+
